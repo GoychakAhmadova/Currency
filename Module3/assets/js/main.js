@@ -7,9 +7,7 @@ let money2='USD'
 //currencyColumn1 onclick
 
 let input1= document.querySelector('#input-1');
-//input1= input1.replace(/,/g, '.')
 let input2= document.querySelector('#input-2');
-//input2= input1.replace(/,/g, '.')
 let p1= document.querySelector('#p-1');
 let p2= document.querySelector('#p-2');
 
@@ -37,20 +35,20 @@ currencyColumn1.addEventListener("click", e=>{
         p1.innerText=`1 ${money1} =${(+Object.values(data.rates))} ${money2}`
         p2.innerText=`1 ${money2} =${(1/Object.values(data.rates))} ${money1}`
 
-       // input1.value=input1.value.replace(/,/g, '. ')
-       // input2.value=input2.value.replace(/,/g, '. ')
+        let a=Number(input1.value.replace(",",'.'))
+        let b=Number(input2.value.replace(",",'.'))
+        input1.value=a
+        input2.value=b
 
-        if(typeof input2.value==='string'){
-            input2.value=(input1.value*Object.values(data.rates));
-        }
-        else if(typeof input1.value==='string'){
-            input1.value=(input2.value/Object.values(data.rates));
-        }
+            input2.value=(input1.value*Object.values(data.rates)).toFixed(7);
+        
+            input1.value=(input2.value/Object.values(data.rates)).toFixed(7);
 
-      }
-        )
-})
-
+           
+        
+      })
+        
+    })
 
 
 //currencyColumn2 onclick
@@ -80,18 +78,21 @@ currencyColumn2.addEventListener("click", e=>{
         p2.innerText=`1 ${money2} =${(1/Object.values(data.rates))} ${money1}`
         
 
-       // input1.value=input1.value.replace(/,/g, '. ')
-        //input2.value=input2.value.replace(/,/g, '. ')
+        console.log( input1.value,"bura input")
+        let a=Number(input1.value.replace(",",'.'))
+        let b=Number(input2.value.replace(",",'.'))
+        input1.value=a
+        input2.value=b
 
+        input2.value=(input1.value*Object.values(data.rates)).toFixed(7);
+  
+        input1.value=(input2.value/Object.values(data.rates)).toFixed(7);
+        
+        
+        
+    }
 
-        if(typeof input2.value==='string'){
-            input2.value=(input1.value*Object.values(data.rates));
-        }
-        else if(typeof input1.value==='string'){
-            input1.value=(input2.value/Object.values(data.rates));
-        }
-
-      }
+      
      )
 })
 
