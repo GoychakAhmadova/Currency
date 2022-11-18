@@ -1,8 +1,6 @@
-
 //Default values
 let money1='RUB'
 let money2='USD'
-
 
 //currencyColumn1 onclick
 
@@ -26,30 +24,22 @@ currencyColumn1.addEventListener("click", e=>{
       e.target.classList.add("active");
       money1=e.target.innerText
      
-
       fetch(`https://api.exchangerate.host/latest?base=${money1}&symbols=${money2}`)
       .then(response=>response.json())
       .then(data=>{
-    
-    
+
         p1.innerText=`1 ${money1} =${(+Object.values(data.rates))} ${money2}`
         p2.innerText=`1 ${money2} =${(1/Object.values(data.rates))} ${money1}`
 
         let a=Number(input1.value.replace(",",'.'))
         let b=Number(input2.value.replace(",",'.'))
-        input1.value=a
-        input2.value=b
 
-            input2.value=(input1.value*Object.values(data.rates)).toFixed(7);
-        
-            input1.value=(input2.value/Object.values(data.rates)).toFixed(7);
-
+        input1.value=a    
+        input2.value=(input1.value*Object.values(data.rates)).toFixed(7);
            
-        
       })
-        
-    })
 
+    })
 
 //currencyColumn2 onclick
 
@@ -64,7 +54,6 @@ currencyColumn2.addEventListener("click", e=>{
             item.classList.remove('active')
         }
      })
-
       e.target.classList.add("active")
       money2=e.target.innerText
      
@@ -73,27 +62,20 @@ currencyColumn2.addEventListener("click", e=>{
       .then(response=>response.json())
       .then(data=>{
     
-    
         p1.innerText=`1 ${money1} =${(+Object.values(data.rates))} ${money2}`
         p2.innerText=`1 ${money2} =${(1/Object.values(data.rates))} ${money1}`
-        
 
-        console.log( input1.value,"bura input")
         let a=Number(input1.value.replace(",",'.'))
         let b=Number(input2.value.replace(",",'.'))
+
         input1.value=a
         input2.value=b
 
         input2.value=(input1.value*Object.values(data.rates)).toFixed(7);
-  
-        input1.value=(input2.value/Object.values(data.rates)).toFixed(7);
-        
-        
-        
+         
     }
-
-      
      )
+
 })
 
 
